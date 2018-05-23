@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','ArticleController@home');
+Route::get('/Article/Category/{id}','ArticleController@category');
+
+Auth::routes();
