@@ -15,9 +15,8 @@ class ArticleController extends Controller
         return 'home';
     }
 
-    public function category($id)
+    public function index(Article $article)
     {
-//        $articles = Article::
-        return $id;
+        return $article;
     }
 }

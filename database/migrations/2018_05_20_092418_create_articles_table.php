@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('summary');
             $table->string('provider');
             $table->string('date_time');
-            $table->string('file');
+            $table->boolean('file');
             $table->bigInteger('hits');
             $table->softDeletes();
             $table->timestamps();
