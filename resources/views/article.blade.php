@@ -2,28 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-    <ol class="breadcrumb">
-        <div class="breadcrumb-item text-center" style="font-family: 'bmitra'" dir="rtl">
-            با سلام به سایت دانشجویان عمران دانشگاه شهید عباسپور خوش آمدید.
-            <br>
-            این سایت جهت ارائه پروژه های دانشجویان عمران تحت نظر اینجانب تهیه شده است.
-            <br>
-            در زیر میتوانید مطالب اخیر سایت را مشاهده کنید.
-        </div>
-    </ol>
-    </div>
-    </div>
-
     <div class="row justify-content-center"  style="font-family: 'bmitra">
-        @foreach($articles as $article)
-        <div class="col-6">
+        <div class="col-8">
             <div class="card">
                 <div class="card-header text-center">
                     {{ $article->tittle }}
                     <span class="badge badge-light" dir="rtl" style="float: left">
-                        {{str_after($article->date_time,' ').'  '}}
-                        {{str_replace('-','/',str_before($article->date_time,' '))}}
+                    {{str_after($article->date_time,' ').'  '}}
+                    {{str_replace('-','/',str_before($article->date_time,' '))}}
                     </span>
                 </div>
 
@@ -44,16 +30,20 @@
                          تعداد بازدید :
                         {{$article->hits}}
                     </div>
-                    <a href="{{route('article',['id'=>$article->id])}}">
-                        <button type="button" class="btn btn-sm btn-secondary" style="float: left">
-                            ادامه مطلب و دانلود
-                        </button>
-                    </a>
+                        @if($article->file==0 || $article->file==null)
+                            <button type="button" class="btn btn-sm btn-warning" style="float: left">
+                                فایلی برای دانلود موجود نیست
+                            </button>
+                        @else
+                        <a href="{{'/file/'.$article->id.'.'.$article->file}}">
+                                <button type="button" class="btn btn-sm btn-warning" style="float: left">
+                                    دانلود
+                                </button>
+                            </a>
+                        @endif
                 </div>
             </div>
         </div>
-        @endforeach
-
     </div>
 </div>
 @endsection

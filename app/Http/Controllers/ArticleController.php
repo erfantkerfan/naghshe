@@ -11,12 +11,27 @@ class ArticleController extends Controller
 {
     public function home()
     {
-        $articles = DB::table('Articles')->inRandomOrder()->limit(5)->get();
-        return 'home';
+        $articles = DB::table('Articles')->where('deleted_at','=',null)->inRandomOrder()->limit(5)->get();
+        return view('home')->with(['articles'=>$articles]);
     }
-
-    public function index(Article $article)
+    public function index($id)
     {
-        return $article;
+        $article = Article::FindOrFail($id);
+        $article->hits ++;
+        $article->save();
+        return view('article')->with(['article'=>$article]);
+    }
+    function delete($id)
+    {
+    $article = Article::FindOrFail($id);
+    $article->delete();
+    return redirect(route('home'));
+    }
+    public function clear_hits($id)
+    {
+        $article = Article::FindOrFail($id);
+        $article->hits =100;
+        $article->save();
+        return back();
     }
 }
