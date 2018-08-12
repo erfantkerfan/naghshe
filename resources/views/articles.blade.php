@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <ol class="breadcrumb" style="background-color: #459186">
+            <ol class="breadcrumb" style="background-color: #5fbbce">
                 <div class="breadcrumb-item text-center " style="font-family: 'bmitra'" dir="rtl">
                     مطالب با دسته بندی
                     {{ \App\Category::Find(basename(url()->current()))->name }}        
@@ -11,6 +11,18 @@
                          تعداد بازدید :
                         {{ \App\Category::Find(basename(url()->current()))->hits }}
                     </div>
+                    @auth
+                        <a href="{{ route('category_delete',['id'=>\App\Category::Find(basename(url()->current()))->id]) }}">
+                            <button type="button" class="btn btn-sm btn-danger mr-3" onclick="return confirm('از حذف این دسته بندی اطمینان دارید؟')" style="float: left">
+                                حذف دسته بندی
+                            </button>
+                        </a>
+                        <a href="{{ route('category_hits',['id'=>\App\Category::Find(basename(url()->current()))->id]) }}">
+                            <button type="button" class="btn btn-sm btn-warning mr-3" style="float: left">
+                                صفر کردن شمارنده بازدید
+                            </button>
+                        </a>
+                    @endauth
                 </div>
             </ol>
         </div>
@@ -33,7 +45,7 @@
                             <div class="badge badge-info">
                                 <a href="{{route('category',['id'=>$article->category_id])}}" style="color: inherit;text-decoration:none;">
                                      دسته بندی :
-                                    {{\App\Category::Find($article->category_id)->name}}
+                                    {{ $article->category()->first()->name }}
                                 </a>
                             </div>
                             <div class="badge badge-primary">

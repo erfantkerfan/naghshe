@@ -150,9 +150,11 @@
                         <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
 
                             @foreach( \App\Category::all() as $category)
-                                <a class="dropdown-item" href="{{route('category',['id'=>$category->id])}}">
-                                    {{$category->name}}
-                                </a>
+                                <button class="dropdown-item" type="button">
+                                    <a class="dropdown-item" href="{{route('category',['id'=>$category->id])}}">
+                                        {{$category->name}}
+                                    </a>
+                                </button >
                             @endforeach
 
                         </div>
@@ -171,6 +173,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ route('category_form') }}">
+                                    ایجاد دسته بندی جدید
+                                </a>
 
                                 <a class="dropdown-item" href="#">
                                     آخرین ورود شما:  

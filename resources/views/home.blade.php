@@ -33,7 +33,7 @@
                     <div class="badge badge-info">
                         <a href="{{route('category',['id'=>$article->category_id])}}" style="color: inherit;text-decoration:none;">
                              دسته بندی :
-                            {{\App\Category::Find($article->category_id)->name}}
+                            {{ $article->category()->first()->name }}
                         </a>
                     </div>
                     <div class="badge badge-primary">

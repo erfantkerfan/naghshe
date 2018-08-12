@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
     public function home()
     {
-        $articles = DB::table('Articles')->where('deleted_at','=',null)->inRandomOrder()->limit(5)->get();
+        $articles = Article::inRandomOrder()->take(3)->get();
         return view('home')->with(['articles'=>$articles]);
     }
     public function index($id)
@@ -33,5 +33,9 @@ class ArticleController extends Controller
         $article->hits =100;
         $article->save();
         return back();
+    }
+    public function form()
+    {
+        return view('admin.article');
     }
 }

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-5 justify-content-center">
                 <div class="card justify-content-center">
-                <div class="card-header text-center">ورود</div>
+                <div class="card-header text-center">ورود مدیر سایت</div>
 
                 <div class="card-body justify-content-center text-center" dir="rtl">
                     <form method="POST" action="{{ route('login') }}" aria-label="ورود">

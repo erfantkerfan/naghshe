@@ -29,4 +29,22 @@ class CategoryController extends Controller
         $category->save();
         return back();
     }
+
+    public function form()
+    {
+        return view('admin.category');
+    }
+
+    public function create(Request $request)
+    {
+        $this->Validate($request, [
+            'name' => 'required|string',
+        ]);
+        Category::create([
+            'name' => $request->name,
+            'hits' => 100,
+        ]);
+        return redirect(route('home'));
+
+    }
 }

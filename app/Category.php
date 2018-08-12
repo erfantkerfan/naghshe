@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use SoftDeletes;
-    public function hits()
-    {
-        return $this->hasMany(Article::class)->sum('hits');
-
-    }
-
+    protected $fillable = [
+        'name', 'hits',
+    ];
     public function article()
     {
         return $this->hasMany(Article::class);
