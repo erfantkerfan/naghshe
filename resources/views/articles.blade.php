@@ -27,7 +27,7 @@
             </ol>
         </div>
 
-        <div class="row justify-content-center"  style="font-family: 'bmitra">
+        <div class="justify-content-center row"  style="font-family: 'bmitra">
             @foreach($articles as $article)
                 <div class="col-8">
                     <div class="card">
@@ -64,6 +64,13 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             @endforeach
 
         </div>

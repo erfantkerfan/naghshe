@@ -30,7 +30,7 @@
                          تعداد بازدید :
                         {{$article->hits}}
                     </div>
-                    @if($article->file==0 || $article->file==null)
+                    @if($article->file==null)
                         <button type="button" class="btn btn-sm btn-warning" style="float: left">
                             فایلی برای دانلود موجود نیست
                         </button>

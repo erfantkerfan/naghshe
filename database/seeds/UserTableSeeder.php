@@ -11,15 +11,15 @@ class UserTableSeeder extends Seeder
             'username' => 'bakhshi',
             'password' => bcrypt('12589'),
             'remember_token' => str_random(10),
-            'last_login' => str_random(10),
-            'login' => str_random(10),
+            'last_login' => \Hekmatinasser\Verta\Verta::now(),
+            'login' => \Hekmatinasser\Verta\Verta::now(),
         ]);
         \App\User::create([
             'username' => 'assistant',
             'password' => bcrypt('123456789'),
             'remember_token' => str_random(10),
-            'last_login' => str_random(10),
-            'login' => str_random(10),
+            'last_login' => \Hekmatinasser\Verta\Verta::now(),
+            'login' => \Hekmatinasser\Verta\Verta::now(),
         ]);
     }
 }

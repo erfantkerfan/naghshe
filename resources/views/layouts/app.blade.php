@@ -149,13 +149,19 @@
 
                         <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
 
-                            @foreach( \App\Category::all() as $category)
+                            @forelse(\App\Category::all() as $category)
                                 <button class="dropdown-item" type="button">
                                     <a class="dropdown-item" href="{{route('category',['id'=>$category->id])}}">
                                         {{$category->name}}
                                     </a>
                                 </button >
-                            @endforeach
+                            @empty
+                                <button class="dropdown-item" type="button">
+                                    <a class="dropdown-item" href="#">
+                                        دسته بندی موجود نیست
+                                    </a>
+                                </button >
+                            @endforelse
 
                         </div>
                     </li>
@@ -174,8 +180,12 @@
 
                             <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
 
+                                <a class="dropdown-item" href="{{ route('article_form') }}">
+                                    ایجاد مطلب
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('category_form') }}">
-                                    ایجاد دسته بندی جدید
+                                    ایجاد دسته بندی
                                 </a>
 
                                 <a class="dropdown-item" href="#">
