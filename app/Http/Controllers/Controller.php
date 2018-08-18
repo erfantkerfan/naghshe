@@ -14,6 +14,17 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function __construct()
+    {
+        if (env('APP_SECURE')) {
+            if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off") {
+                $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+//                header('HTTP/1.1 301 Moved Permanently');
+                header('Location: ' . $redirect);
+                exit();
+            }
+        }
+    }
     public function about()
     {
         return view('about');
