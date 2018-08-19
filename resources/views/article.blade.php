@@ -35,7 +35,7 @@
                             فایلی برای دانلود موجود نیست
                         </button>
                     @else
-                    <a href="{{'/file/'.$article->id.'.'.$article->file}}">
+                    <a href="{{'/bakhshi/file/'.$article->id.'.'.$article->file}}">
                         <button type="button" class="btn btn-sm btn-warning" style="float: left">
                             دانلود
                         </button>
